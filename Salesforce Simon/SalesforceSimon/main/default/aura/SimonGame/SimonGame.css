@@ -1,0 +1,9 @@
+.THIS .displayBox{
+
+    font-size:25pt;
+    height:80px;
+    background-color:white;
+    border-radius:5px;
+    margin:15px;
+    padding: 15px 30px 30px 15px;
+}
