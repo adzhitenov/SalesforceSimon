@@ -1,32 +1,67 @@
 ({
 
     startGame : function(component, event, helper){
-
+        // Starts the game by initiating sequence generation and playback
         console.log("START GAME");
 
-        let currentSeq = component.get("v.sequence");
-        console.log("RETRIEVED");
-        let newSeq = helper.seqGen(currentSeq);
-        console.log("SET");
-        component.set("v.sequence", newSeq);
+        component.set("v.game", true);
+
+        helper.sequencer(component);
+
+        /*
+        while(game){
+
+            let sequence = helper.seqGen(component.get("v.sequence"));
+            component.set("v.sequence", sequence);
+            helper.playSequence(component);
+            component.set("allowInput", true);
+
+            while (component.get("v.playerInput").length < sequence.length){
+
+                if ()
+
+            }
+
+            component.set("v.allowInput", false);
+
+        }
+        */
 
     },
 
 
     playerInput : function(component, event, helper){
+        // Accepts player input from one of the 4 buttons, and stores it in the player's sequence
 
-        let input = event.getSource().get("v.label");
-        console.log("INPUT");
-        console.log(input);
-        let currentInput = component.get("v.playerInput");
-        currentInput.push(event.getSource().get("v.label"));
-        console.log(currentInput);
-        component.set("v.playerInput", currentInput);
-        console.log(component.get("v.playerInput"));
+        if (component.get("v.allowInput")){
+
+            let input = event.getSource().get("v.label");
+
+            helper.displayNum(component, input, 1000);
+
+            let sequence = component.get("v.sequence");
+            let currentInput = component.get("v.playerInput");
+
+
+
+            currentInput.push(input);
+            component.set("v.playerInput", currentInput);
+
+            let currentStep = currentInput.length;
+        
+            if (input == sequence[currentStep-1]){
+                if (currentStep == sequence.length){
+                    component.set("v.playerInput", []);
+                    setTimeout(function(){helper.sequencer(component);}, 1100);
+                }
+            }
+            else
+                helper.gameOver(component);
+        }
     },
 
 
-    gameOverTest : function(component, event, helper){
+    endGame : function(component, event, helper){
         console.log("GAME OVER TEST");
         helper.gameOver(component);
     },

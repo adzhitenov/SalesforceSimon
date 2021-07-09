@@ -1,8 +1,11 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global">
 
-    <aura:attribute name="sequence" type="Integer[]" default="[]"/>
-    <aura:attribute name="playerInput" type="Integer[]" default="[]"/>
-    <aura:attribute name="current" type="integer"/>
+    <aura:attribute name="sequence"     type="Integer[]" default="[]"/>
+    <aura:attribute name="playerInput"  type="Integer[]" default="[]"/>
+    <aura:attribute name="currentDisplay"      type="integer"/>
+
+    <aura:attribute name="game"         type="boolean" default="false"/>
+    <aura:attribute name="allowInput"   type="boolean" default="false"/>
 
 
     <aura:iteration items="{!v.sequence}" var="item">
@@ -15,23 +18,25 @@
         {!item}
     </aura:iteration>
 
-    <br/>
 
-    <lightning:button label="Start" onclick="{!c.startGame}"/>
+    <div style="font-size:25pt; height:60px">{!v.currentDisplay}</div>
+
+    <lightning:button label="Start" onclick="{!c.startGame}" disabled="{!v.game}"/>
+    <lightning:button label="End Game" onclick="{!c.endGame}" disabled="{! !v.game || !v.allowInput}"/>
     
     <br/>
+    <br/>
+    
 
-    <div style="font-size: 20">{!v.current}</div>
 
-
-    <lightning:button label="1" onclick="{!c.playerInput}"/>
-    <lightning:button label="2" onclick="{!c.playerInput}"/>
-    <lightning:button label="3" onclick="{!c.playerInput}"/>
-    <lightning:button label="4" onclick="{!c.playerInput}"/>
+    <lightning:button label="1" onclick="{!c.playerInput}" disabled="{! !v.allowInput}"/>
+    <lightning:button label="2" onclick="{!c.playerInput}" disabled="{! !v.allowInput}"/>
+    <lightning:button label="3" onclick="{!c.playerInput}" disabled="{! !v.allowInput}"/>
+    <lightning:button label="4" onclick="{!c.playerInput}" disabled="{! !v.allowInput}"/>
 
     <br/>
 
     <lightning:button label="Game Over" onclick="{!c.gameOverTest}"/>
     <lightning:button label="Play Sequence" onclick="{!c.playSequenceTest}"/>
 
-</aura:component>	
+</aura:component>
