@@ -8,25 +8,14 @@
     <aura:attribute name="allowInput"   type="boolean" default="false"/>
 
 
-    <aura:iteration items="{!v.sequence}" var="item">
-        {!item}
-    </aura:iteration>
+
+    <div class="slds-grid slds-gutters">
+        <div class="displayBox slds-size_1-of-8">
+            {!v.currentDisplay}
+        </div>
+    </div>
 
     <br/>
-
-    <aura:iteration items="{!v.playerInput}" var="item">
-        {!item}
-    </aura:iteration>
-
-
-    <div style="font-size:25pt; height:60px">{!v.currentDisplay}</div>
-
-    <lightning:button label="Start" onclick="{!c.startGame}" disabled="{!v.game}"/>
-    <lightning:button label="End Game" onclick="{!c.endGame}" disabled="{! !v.game || !v.allowInput}"/>
-    
-    <br/>
-    <br/>
-    
 
 
     <lightning:button label="1" onclick="{!c.playerInput}" disabled="{! !v.allowInput}"/>
@@ -35,8 +24,9 @@
     <lightning:button label="4" onclick="{!c.playerInput}" disabled="{! !v.allowInput}"/>
 
     <br/>
+    <br/>
 
-    <lightning:button label="Game Over" onclick="{!c.gameOverTest}"/>
-    <lightning:button label="Play Sequence" onclick="{!c.playSequenceTest}"/>
+    <lightning:button label="Start" onclick="{!c.startGame}" disabled="{!v.game}"/>
+    <lightning:button label="End Game" onclick="{!c.endGame}" disabled="{! !v.game || !v.allowInput}"/>
 
 </aura:component>
