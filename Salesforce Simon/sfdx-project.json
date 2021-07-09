@@ -1,11 +1,11 @@
 {
     "packageDirectories": [
         {
-            "path": "force-app",
-            "default": true,
+            "path": "SalesforceSimon",
             "package": "SalesforceSimon",
             "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT"
+            "versionNumber": "0.1.0.NEXT",
+            "default": true
         }
     ],
     "name": "Salesforce Simon",
@@ -13,6 +13,6 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "SalesforceSimon": "0Ho5e000000PBgXCAW"
+        "SalesforceSimon": "0Ho5e000000PBgcCAG"
     }
 }

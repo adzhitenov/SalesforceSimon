@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+
+    <aura:attribute name="sequence" type="Integer[]" default="[]"/>
+    <aura:attribute name="playerInput" type="Integer[]" default="[]"/>
+    <aura:attribute name="current" type="integer"/>
+
+
+    <aura:iteration items="{!v.sequence}" var="item">
+        {!item}
+    </aura:iteration>
+
+    <br/>
+
+    <aura:iteration items="{!v.playerInput}" var="item">
+        {!item}
+    </aura:iteration>
+
+    <br/>
+
+    <lightning:button label="Start" onclick="{!c.startGame}"/>
+    
+    <br/>
+
+    <div style="font-size: 20">{!v.current}</div>
+
+
+    <lightning:button label="1" onclick="{!c.playerInput}"/>
+    <lightning:button label="2" onclick="{!c.playerInput}"/>
+    <lightning:button label="3" onclick="{!c.playerInput}"/>
+    <lightning:button label="4" onclick="{!c.playerInput}"/>
+
+    <br/>
+
+    <lightning:button label="Game Over" onclick="{!c.gameOverTest}"/>
+    <lightning:button label="Play Sequence" onclick="{!c.playSequenceTest}"/>
+
+</aura:component>	
