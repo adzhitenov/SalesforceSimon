@@ -13,6 +13,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "SalesforceSimon": "0Ho5e000000PBgcCAG"
+        "SalesforceSimon": "0Ho5e000000PBgcCAG",
+        "SalesforceSimon@0.1.0-1": "04t5e000000FhIhAAK"
     }
 }
